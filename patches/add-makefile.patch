@@ -1,6 +1,12 @@
 Add Makefile for simpler installation
 --- /dev/null
 +++ b/Makefile
-@@ -0,0 +1,2 @@
+@@ -0,0 +1,8 @@
++all:
++
 +install:
-+	echo "pepepepepepepepepepepepe"
++	install -D -m755 bin/vertx $(DESTDIR)/usr/bin/vertx
++	mkdir -p $(DESTDIR)/usr/share/vertx
++	cp -r lib/* $(DESTDIR)/usr/share/vertx
++	mkdir -p $(DESTDIR)/etc/vertx
++	cp -r conf/* $(DESTDIR)/etc/vertx
