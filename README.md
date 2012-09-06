@@ -5,4 +5,4 @@ Files for making a Debian package of Vert.x
 3. Extract it and clone this repository as `debian/`
 4. Run `$ dpkg-buildpackage`
 
-**pull requests are welcome
+**pull requests are welcome**
