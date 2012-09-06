@@ -1,0 +1,18 @@
+Source: vert.x
+Section: net
+Priority: optional
+Maintainer: Diego López León <diegoll@itcrowdarg.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+Homepage: http://vertx.io
+#Vcs-Git: git://git.debian.org/collab-maint/vert.x.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/vert.x.git;a=summary
+
+Package: vert.x
+Architecture: all
+#Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends:
+Description: An event driven application framework
+ Vert.x is an event driven application framework that runs on
+ the JVM - a run-time with real concurrency and unrivalled performance.
+ Vert.x then exposes the API in Ruby, Java, Groovy, JavaScript and Python

@@ -1,0 +1,6 @@
+Add Makefile for simpler installation
+--- /dev/null
++++ b/Makefile
+@@ -0,0 +1,2 @@
++install:
++	echo "pepepepepepepepepepepepe"
