@@ -10,7 +10,7 @@ Vcs-Browser: https://github.com/diega/vertx-debian
 
 Package: vert.x
 Architecture: all
-Depends: j2re1.7
+Depends: j2re1.7, jruby, jython
 Description: An event driven application framework
  Vert.x is an event driven application framework that runs on
  the JVM - a run-time with real concurrency and unrivalled performance.
