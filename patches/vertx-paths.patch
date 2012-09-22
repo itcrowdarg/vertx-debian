@@ -1,38 +1,22 @@
 Adjust Vert.x paths for running
 --- a/bin/vertx
 +++ b/bin/vertx
-@@ -21,18 +21,22 @@
- SCRIPTDIR=`cd $DIRNAME;pwd`
- cd $CURRDIR
+@@ -65,7 +65,11 @@
+ APP_HOME="`pwd -P`"
+ cd "$SAVED"
  
+-CLASSPATH=$APP_HOME/lib/*:$APP_HOME/conf:$JYTHON_HOME/jython.jar::$JRUBY_HOME/lib/jruby.jar
++JRUBY_HOME=/usr/lib/jruby
 +LIBDIR=/usr/share/vertx
 +CONFDIR=/etc/vertx
 +
- CLASSPATH=\
--$DIRNAME/../conf:\
--$DIRNAME/../lib/jars/vert.x-core.jar:\
--$DIRNAME/../lib/jars/vert.x-platform.jar:\
--$DIRNAME/../lib/jars/netty.jar:\
--$DIRNAME/../lib/jars/jackson-core.jar:$DIRNAME/../lib/jars/jackson-mapper.jar:\
--$DIRNAME/../lib/jars/hazelcast.jar:\
--$JRUBY_HOME/lib/jruby.jar:\
--$DIRNAME/../lib/jars/groovy.jar:\
--$DIRNAME/../lib/jars/js.jar:\
--$DIRNAME/../lib/ruby:\
--$DIRNAME/../lib/javascript
-+$CONFDIR/conf:\
-+$LIBDIR/jars/vert.x-core.jar:\
-+$LIBDIR/jars/vert.x-platform.jar:\
-+$LIBDIR/jars/netty.jar:\
-+$LIBDIR/jars/jackson-core.jar:\
-+$LIBDIR/jars/jackson-mapper.jar:\
-+$LIBDIR/jars/hazelcast.jar:\
-+$LIBDIR/jars/groovy.jar:\
-+$LIBDIR/jars/js.jar:\
-+$LIBDIR/ruby:\
-+$LIBDIR/javascript:\
-+$JRUBY_HOME/lib/jruby.jar
++CLASSPATH=$LIBDIR/*:$CONFDIR/conf:/usr/share/java/jython.jar:$JRUBY_HOME/lib/jruby.jar
  
--java -Djava.util.logging.config.file=$DIRNAME/../conf/logging.properties -Djruby.home=$JRUBY_HOME \
-+java -Djava.util.logging.config.file=$CONFDIR/logging.properties -Djruby.home=$JRUBY_HOME \
- -Dvertx.mods=$VERTX_MODS -Dvertx.install=$SCRIPTDIR/.. -cp $CLASSPATH org.vertx.java.deploy.impl.cli.Starter "$@"
+ # Determine the Java command to use to start the JVM.
+ if [ -n "$JAVA_HOME" ] ; then
+@@ -164,4 +168,4 @@
+ }
+ eval splitJvmOpts $DEFAULT_JVM_OPTS $JAVA_OPTS $VERTX_OPTS
+ 
+-exec "$JAVACMD" "${JVM_OPTS[@]}" -Dvertx.install=$APP_HOME -Djava.util.logging.config.file=$APP_HOME/conf/logging.properties -Djruby.home=$JRUBY_HOME -classpath "$CLASSPATH" org.vertx.java.deploy.impl.cli.Starter "$@"
++exec "$JAVACMD" "${JVM_OPTS[@]}" -Djava.util.logging.config.file=$CONFDIR/logging.properties -Djruby.home=$JRUBY_HOME -classpath "$CLASSPATH" org.vertx.java.deploy.impl.cli.Starter "$@"

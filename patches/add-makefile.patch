@@ -7,6 +7,6 @@ Add Makefile for simpler installation
 +install:
 +	install -D -m755 bin/vertx $(DESTDIR)/usr/bin/vertx
 +	mkdir -p $(DESTDIR)/usr/share/vertx
-+	cp -r lib/* $(DESTDIR)/usr/share/vertx
++	cp lib/*.jar $(DESTDIR)/usr/share/vertx
 +	mkdir -p $(DESTDIR)/etc/vertx
-+	cp -r conf/* $(DESTDIR)/etc/vertx
++	cp conf/* $(DESTDIR)/etc/vertx
