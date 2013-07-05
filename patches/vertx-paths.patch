@@ -1,22 +1,41 @@
 Adjust Vert.x paths for running
 --- a/bin/vertx
 +++ b/bin/vertx
-@@ -65,7 +65,11 @@
- APP_HOME="`pwd -P`"
- cd "$SAVED"
+@@ -55,25 +55,9 @@
+     [ -n "$JAVA_HOME" ] && JAVA_HOME=`cygpath --unix "$JAVA_HOME"`
+ fi
  
--CLASSPATH=$APP_HOME/lib/*:$APP_HOME/conf:$JYTHON_HOME/jython.jar::$JRUBY_HOME/lib/jruby.jar
-+JRUBY_HOME=/usr/lib/jruby
+-# Attempt to set VERTX_HOME
+-# Resolve links: $0 may be a link
+-PRG="$0"
+-# Need this for relative symlinks.
+-while [ -h "$PRG" ] ; do
+-    ls=`ls -ld "$PRG"`
+-    link=`expr "$ls" : '.*-> \(.*\)$'`
+-    if expr "$link" : '/.*' > /dev/null; then
+-        PRG="$link"
+-    else
+-        PRG=`dirname "$PRG"`"/$link"
+-    fi
+-done
+-SAVED="`pwd`"
+-cd "`dirname \"$PRG\"`/.."
+-VERTX_HOME="`pwd -P`"
+-cd "$SAVED"
+-
+-CLASSPATH=${CLASSPATH}:${VERTX_HOME}/conf:${VERTX_HOME}/lib/*
 +LIBDIR=/usr/share/vertx
 +CONFDIR=/etc/vertx
-+
-+CLASSPATH=$LIBDIR/*:$CONFDIR/conf:/usr/share/java/jython.jar:$JRUBY_HOME/lib/jruby.jar
++CLASSPATH=${CLASSPATH}:${CONFDIR}/:${LIBDIR}/*
  
  # Determine the Java command to use to start the JVM.
  if [ -n "$JAVA_HOME" ] ; then
-@@ -164,4 +168,4 @@
- }
- eval splitJvmOpts $DEFAULT_JVM_OPTS $JAVA_OPTS $VERTX_OPTS
+@@ -174,7 +158,6 @@
  
--exec "$JAVACMD" "${JVM_OPTS[@]}" -Dvertx.install=$APP_HOME -Djava.util.logging.config.file=$APP_HOME/conf/logging.properties -Djruby.home=$JRUBY_HOME -classpath "$CLASSPATH" org.vertx.java.deploy.impl.cli.Starter "$@"
-+exec "$JAVACMD" "${JVM_OPTS[@]}" -Djava.util.logging.config.file=$CONFDIR/logging.properties -Djruby.home=$JRUBY_HOME -classpath "$CLASSPATH" org.vertx.java.deploy.impl.cli.Starter "$@"
+ exec "$JAVACMD" \
+     "${JVM_OPTS[@]}" \
+-    -Djava.util.logging.config.file=${VERTX_JUL_CONFIG:-${VERTX_HOME}/conf/logging.properties} \
+-    -Dvertx.home=$VERTX_HOME\
++    -Djava.util.logging.config.file=${CONFDIR}/logging.properties \
+     -classpath "$CLASSPATH" \
+     org.vertx.java.platform.impl.cli.Starter "$@"

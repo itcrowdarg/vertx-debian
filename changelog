@@ -1,3 +1,9 @@
+vert.x (2.0.0.CR2) unstable; urgency=low
+
+  * New upstream version
+
+ -- Diego López León <diegoll@itcrowdarg.com>  Thu, 04 Jul 2013 19:58:19 -0300
+
 vert.x (1.2.3.final) stable; urgency=low
 
   * New upstream version
