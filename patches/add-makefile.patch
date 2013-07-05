@@ -9,4 +9,4 @@ Add Makefile for simpler installation
 +	mkdir -p $(DESTDIR)/usr/share/vertx
 +	cp lib/*.jar $(DESTDIR)/usr/share/vertx
 +	mkdir -p $(DESTDIR)/etc/vertx
-+	cp conf/* $(DESTDIR)/etc/vertx
++	cp -r conf/* $(DESTDIR)/etc/vertx
