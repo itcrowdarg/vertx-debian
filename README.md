@@ -5,6 +5,6 @@
 4. Run `$ dpkg-buildpackage`
 
 # Distro compatibility
-This package depends on java _java7-runtime-headless_ in Debian. This is provided by **openjdk-7-jre-headless** or by the package generated using [java-package](packages.debian.org/java-package)(v0.52).
+This package depends on java _java7-runtime-headless_ in Debian. This is provided by **openjdk-7-jre-headless** or by the package generated using [java-package](http://packages.debian.org/java-package)(v0.52).
 
 **pull requests are welcome**
