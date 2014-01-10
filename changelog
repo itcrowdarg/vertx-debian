@@ -1,3 +1,9 @@
+vert.x (2.1M2-1) unstable; urgency=medium
+
+  * New upstream version
+
+ -- Diego López León <diegoll@itcrowdarg.com>  Thu, 09 Jan 2014 19:16:06 -0300
+
 vert.x (2.0.0.final-1) stable; urgency=low
 
   * New upstream version
