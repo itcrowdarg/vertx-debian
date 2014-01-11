@@ -1,12 +1,19 @@
 Add Makefile for simpler installation
 --- /dev/null
 +++ b/Makefile
-@@ -0,0 +1,8 @@
+@@ -0,0 +1,15 @@
++maven_repo = http://repo1.maven.org/maven2
++slf4j_version = 1.6.5
++logback_version = 1.0.6
++
 +all:
 +
 +install:
 +	install -D -m755 bin/vertx $(DESTDIR)/usr/bin/vertx
 +	mkdir -p $(DESTDIR)/usr/share/vertx
 +	cp lib/*.jar $(DESTDIR)/usr/share/vertx
++	wget $(maven_repo)/org/slf4j/slf4j-api/$(slf4j_version)/slf4j-api-$(slf4j_version).jar -P $(DESTDIR)/usr/share/vertx
++	wget $(maven_repo)/ch/qos/logback/logback-core/$(logback_version)/logback-core-$(logback_version).jar -P $(DESTDIR)/usr/share/vertx
++	wget $(maven_repo)/ch/qos/logback/logback-classic/$(logback_version)/logback-classic-$(logback_version).jar -P $(DESTDIR)/usr/share/vertx
 +	mkdir -p $(DESTDIR)/etc/vertx
 +	cp -r conf/* $(DESTDIR)/etc/vertx
